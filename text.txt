@@ -1,0 +1,10 @@
+The local node is defined as the node which requests to synchronize with a reference clock.
+￼				The remote node is defined as the node whose clock is considered as reference clock and keeps true time.
+￼				The offset is defined as the difference between the remote clock time and the local clock time.
+				Incoming transit time refers to the time taken by a request from local to remote server. 
+				Outgoing transit time refers to the time taken by a request from remote to local server.
+				Time source or reference clock is the clock with which every other node synchronizes its own clock.
+				CNTP is the custom NTP introduced in this paper.
+				DRTT is defined a direct round trip delay between two directly connect nodes.
+				End to end transit time is defined as the time taken for packet to travel from one node to another across the network.
+				Send timestamp is the timestamp established by the client host and specifying the local time at which the request departed for the service host.

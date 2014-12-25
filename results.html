@@ -1,0 +1,167 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<style>
+  	ol {
+    	display: block;
+    	margin-top: 1em;
+    	margin-bottom: 1em;
+    	margin-left: 0;
+    	margin-right: 0;
+    	padding-left: 40px;
+		}
+	</style>
+  <title>cntp</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <header>
+	  <div id="banner">
+	    <div id="welcome">
+	      <h3>CNTP - <span>Custom Network Time Protocol</span></h3>
+	    </div><!--close welcome-->
+	    <!-- <div id="welcome_slogan">
+	      <h3>Your company slogan here</h3>
+	    </div> --><!--close welcome_slogan-->			
+	  </div><!--close banner-->
+    </header>
+
+	<nav>
+	  <div id="menubar">
+        <ul id="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ourwork.html">Our Work</a></li>
+          <li class="current"><a href="results.html">Results</a></li>
+           <li><a href="references.html">References</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div><!--close menubar-->	
+	</nav>
+    
+	<div id="site_content">		
+
+     <!-- <div class="slideshow">
+	    <ul class="slideshow">
+          <li class="show"><img width="900" height="250" src="images/home_1.jpg" alt="&quot;Enter your caption here&quot;" /></li>
+          <li><img width="900" height="250" src="images/home_2.jpg" alt="&quot;Enter your caption here&quot;" /></li>
+        </ul> 
+	  </div> -->
+	
+	  <div id="content">
+        <div class="content_item">
+          
+          <h1>Results</h1>
+          <br/>
+          	<p class="thickfont">a.How Traditional NTP would fail?</p><br/>
+				
+				<center><img height = "300" width="500" src="images/figure7.png" alt="figure7" align="middle" /></center>
+				<br/>
+				<br/>
+          		<p class = "padleft">To demonstrate how traditional NTP fails, let us consider a scenario that
+          		   the two clocks of S<sub>0</sub> and S<sub>1</sub> are offset by 10 time units. Referring to 
+          		   <span>Figure 7</span>, consider S<sub>1</sub> sends an NTP packet to S<sub>0</sub> at time T<sub>0</sub> = 10 time unit, 
+          		   the time taken by this packet to reach S0 be TTX = 5 time unit. Therefore,
+          		   <br/>
+          		   <br/>
+          		   T<sub>R</sub> &nbsp;=&nbsp;T<sub>0</sub>&nbsp;+&nbsp;T<sub>Tx</sub>&nbsp;+&nbsp;offset &nbsp;= &nbsp;10+5+10 &nbsp;= &nbsp;25timeunit.
+          		   <br/>
+          		   <br/>
+          		   Let's say S<sub>0</sub> sends a reply after 10 time unit at T<sub>T</sub> = 35 time unit. 
+          		   Time taken for the packet to reach from S<sub>0</sub> to S<sub>1</sub>, T<sub>RX</sub> =10 time unit, 
+          		   so packet will reach S<sub>1</sub> at T<sub>I</sub>.
+          		   <br/>
+          		   <br/>
+          		   T<sub>I</sub>&nbsp;=&nbsp;T<sub>T</sub>&nbsp;-&nbsp;offset&nbsp;+&nbsp;T<sub>RX</sub>&nbsp; = &nbsp;35&nbsp;-&nbsp;10&nbsp;+&nbsp;10&nbsp; = &nbsp;35timeunit.
+          		   <br/>
+          		   <br/>
+          		   We find offset using below equations :-
+          		   <br/>
+          		   <br/>
+						T<sub>Local</sub>&nbsp; = &nbsp;(&nbsp;T<sub>o</sub>&nbsp; + &nbsp;T<sub>I</sub>&nbsp;)&nbsp; / &nbsp;2 &nbsp;= &nbsp;(&nbsp;10 &nbsp;+ &nbsp;35&nbsp;)&nbsp; /&nbsp; 2 &nbsp;=&nbsp; 22.5 &nbsp;timeunit.
+						<br/>
+						<br/>
+						T<sub>Remote</sub>&nbsp; = &nbsp;(&nbsp;T<sub>R</sub>&nbsp; +&nbsp; T<sub>T</sub>&nbsp;) &nbsp;/&nbsp; 2 &nbsp;= &nbsp;(&nbsp;25&nbsp; + &nbsp;35&nbsp;) &nbsp;/&nbsp; 2&nbsp; = &nbsp;30&nbsp; timeunit.
+						<br/>
+						<br/>
+					Offset &nbsp;= &nbsp;T<sub>Remote</sub> &nbsp;-&nbsp; T<sub>Local</sub>&nbsp; = &nbsp;30 &nbsp;-&nbsp; 22.5 &nbsp;= &nbsp;7.5 &nbsp;timeunit.
+					<br/><br/>
+						From the above calculations we can see that the error in offset
+					is &nbsp;10&nbsp; - &nbsp;7.5&nbsp; = &nbsp;2.5 &nbsp;timeunit. This error is nothing but the half of
+						the difference in T<sub>Tx</sub> and T<sub>RX</sub>. So we can say that traditional
+					NTP would give results with an error of &nbsp;(&nbsp;T<sub>Tx</sub>&nbsp; -&nbsp; T<sub>RX</sub>&nbsp;) &nbsp;/ &nbsp;2.
+					This error is completely eliminated in our implementation as
+						our method does not depend on the premise that incoming and
+						outgoing transit times are equal, but we measure the one way
+					transit time. This is shown in below,
+					consider the same setup with
+					offset = 10 time unit
+					delay from S<sub>0</sub> to S<sub>1</sub> &nbsp;= &nbsp;10&nbsp; timeunit
+          		</p>
+          		<br/>
+          		<p class="thickfont">b.Our Results</p><br/>
+          		<center><table border = 1>
+          		<tr>
+          			<td><center><img height = "400" width="700" src= "images/drtt_result.png" align="middle"/></center></td>
+          		</tr>
+          		</table></center>
+          		<br/>
+          		<br/>
+          		<center><table border = 1>
+          			<tr><td><center><img height = "500" width="700" src= "images/results.png" align="middle"/></center></td></tr>
+          		</table></center>
+		    	<br/>
+		    	<br/>
+		    	<p class = "padleft"> The above plot is is for offset in milliseconds with respect to UTC epoch time for four scenarios.
+									  The four scenarios are legacy NTP over asymetric link and direct link, custom NTP over link with routers and direct link.
+									  To compare the our implementation with that of the legacy NTP we measured the offset between master and 
+     								  slave with custom NTP and legacy NTP simulatenously.To compare the results of the four scenarios with each 
+									  other, we do not update the slave clock and only record the offset.  Because of this we see that the 
+									  graph is not a straight line but with a slope. The slope of the line is nothing but the clock drift rate of the slave.
+									  The difference between the transit times in case of asymetric NTP was 129micro seconds when we measured these set of values. 
+									  Now refer to the second graph which is zoomed version of the first graph. If we consider the points where the grpahs intersect with Y axis we can see that the legacy NTP over asymetric link does not match with that of legacy NTP over direct link. This clearly shows the problem with NTP. The difference between the offset values is 100micro seconds. 
+									  It is seen that the offset values for custom NTP in both the scenarios and that of legacy NTP over direct link 
+									  coincide, the graph are overlapping for entire range with very little deviation. This proves two points:
+									  <ol type="1">
+									  	<li>Our implementation is independent of the path taken by the packet.</li>
+									  	<li>The offset that we get is correct as this coincides with that of legacy NTP over direct link. 
+											Legacy NTP is a code that has been accepted and used world wide. Also if we run it over direct
+ 											link we know that the incoming and and outgoing transit times are same as transmission and reception 
+ 											is over same link. So we can consider it as reference.</li>
+									  </ol>
+</p>
+			<!--<div class="content_container">
+			  <h3>Mr Joe Bloggs</h3>
+			  <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.&rdquo;</p>
+			</div> --><!--close content_container-->
+            <!--<div class="content_container">
+			  <h3>Mr Joe Bloggs</h3>
+			  <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.&rdquo;</p>
+			</div> --><!--close content_container--> 
+			<!-- <div class="content_container">
+			  <h3>Mr Joe Bloggs</h3>
+			  <p>&ldquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor enim. Aliquam facilisis neque non nunc posuere eget volutpat metus tincidunt.&rdquo;</p>
+			</div> --><!--close content_container-->
+	    </div><!--close content_item-->
+      </div><!--close content-->   
+	</div><!--close site_content-->  	
+  </div><!--close main-->
+  
+    <footer>
+	  <a href="index.html">Home</a> | <a href="ourwork.html">Our Work</a> | <a href="results.html">Results</a> | <a href="references.html">References</a> | <a href="contact.html">Contact</a><!--<br/><br/>
+	  website template by <a href="http://www.freehtml5templates.co.uk">Free HTML5 Templates</a> -->
+    </footer>
+
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/image_slide.js"></script>  
+  
+</body>
+</html>
